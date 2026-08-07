@@ -207,6 +207,7 @@
       title: 'Sales Performance & Quota Attainment',
       subtitle: 'Quarterly quota attainment history across roles',
       reflection: 'This artefact visualises my consistent sales excellence across four years and multiple roles at SafetyCulture. My quota attainment ranges from 122% to 341% quarterly, demonstrating ability to exceed targets under varying market and role conditions. As a BDR, I achieved 250% in Q2 2024; as Account Executive, 341% in Q3 2025.',
+      dashboardLink: './sales-dashboard.html',
       metrics: ['166% average attainment', '341% peak (Q3 2025)', '122% baseline (Q4 2023)', '100% quarters met quota']
     },
     {
@@ -293,6 +294,13 @@
                 <h4 class="font-bold text-gray-900 mb-2">Reflection</h4>
                 <p class="text-gray-700 leading-relaxed">${a.reflection}</p>
               </div>
+              ${a.dashboardLink ? `
+  <div class="mt-4 pt-4 border-t border-gray-200">
+    <a href="${a.dashboardLink}" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
+      📊 View Interactive Dashboard →
+    </a>
+  </div>
+` : ''}
               <div>
                 <h4 class="font-bold text-gray-900 mb-2">Key Metrics</h4>
                 <div class="grid grid-cols-2 gap-2">
