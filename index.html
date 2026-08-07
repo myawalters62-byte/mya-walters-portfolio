@@ -3,320 +3,875 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mya Walters | ePortfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Mya Walters - Graduate ePortfolio | RMIT Assessment 2</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    .transition-all { transition: all 0.3s ease; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+    
+    .navbar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    
+    .nav-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+    
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.3s;
+    }
+    
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+    
+    .nav-btn.active {
+      background: white;
+      color: #667eea;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    
+    .section {
+      display: none;
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    .header {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      color: #1e3c72;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 16px;
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .stat {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    
+    .stat-label {
+      font-size: 12px;
+      opacity: 0.9;
+      margin-top: 5px;
+    }
+    
+    .artefact-card {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+    
+    .artefact-header {
+      padding: 25px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    
+    .artefact-header:hover {
+      background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    }
+    
+    .artefact-number {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-right: 12px;
+    }
+    
+    .artefact-title {
+      font-size: 18px;
+      font-weight: bold;
+    }
+    
+    .artefact-toggle {
+      font-size: 20px;
+      transition: transform 0.3s;
+    }
+    
+    .artefact-card.expanded .artefact-toggle {
+      transform: rotate(180deg);
+    }
+    
+    .artefact-content {
+      padding: 30px;
+      display: none;
+    }
+    
+    .artefact-card.expanded .artefact-content {
+      display: block;
+    }
+    
+    .reflection {
+      background: #f8f9fa;
+      padding: 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      border-left: 4px solid #667eea;
+    }
+    
+    .reflection-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 12px;
+    }
+    
+    .reflection-text {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+    
+    .metric-badge {
+      background: #e3f2fd;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      border-left: 3px solid #1976d2;
+    }
+    
+    .expandable-section {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      margin: 15px 0;
+      overflow: hidden;
+    }
+    
+    .expandable-header {
+      padding: 12px 16px;
+      background: #f0f0f0;
+      cursor: pointer;
+      font-weight: 600;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .expandable-header:hover {
+      background: #e8e8e8;
+    }
+    
+    .expandable-icon {
+      transition: transform 0.3s;
+      font-size: 18px;
+    }
+    
+    .expandable-section.open .expandable-icon {
+      transform: rotate(180deg);
+    }
+    
+    .expandable-content {
+      display: none;
+      padding: 16px;
+      background: white;
+    }
+    
+    .expandable-section.open .expandable-content {
+      display: block;
+    }
+    
+    .evidence-section {
+      margin: 20px 0;
+    }
+    
+    .evidence-title {
+      font-size: 14px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 8px;
+    }
+    
+    .evidence-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 15px 0;
+    }
+    
+    .evidence-image {
+      background: #f0f0f0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+    }
+    
+    .evidence-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .evidence-placeholder {
+      background: #f0f0f0;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+      padding: 40px;
+      text-align: center;
+      color: #999;
+      font-size: 13px;
+    }
+    
+    .link-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 8px 8px 8px 0;
+      transition: transform 0.2s;
+    }
+    
+    .link-button:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: white;
+    }
+    
+    .linkedin-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+      margin: 15px 0;
+    }
+    
+    .linkedin-card {
+      background: #f0f7ff;
+      border: 1px solid #0066cc;
+      border-radius: 6px;
+      padding: 12px;
+    }
+    
+    .linkedin-card a {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+    
+    .linkedin-card a:hover {
+      text-decoration: underline;
+    }
+    
+    .linkedin-description {
+      font-size: 12px;
+      color: #666;
+      margin-top: 4px;
+    }
+    
+    @media (max-width: 768px) {
+      .nav-buttons {
+        gap: 8px;
+      }
+      
+      .nav-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+      }
+      
+      .header h1 {
+        font-size: 24px;
+      }
+      
+      .artefact-header {
+        padding: 16px;
+      }
+      
+      .artefact-title {
+        font-size: 16px;
+      }
+    }
   </style>
 </head>
-<body class="bg-gray-50">
-
-<!-- Navigation -->
-<nav class="bg-gradient-to-r from-blue-900 to-blue-800 text-white sticky top-0 z-50 shadow-lg">
-  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center flex-wrap gap-4">
-    <div class="flex items-center gap-2">
-      <div class="w-10 h-10 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-sm">MW</div>
-      <div>
-        <h1 class="text-xl font-bold">Mya Walters</h1>
-        <p class="text-blue-100 text-sm">Account Director, Mining & Natural Resources</p>
-      </div>
-    </div>
-    <div class="flex gap-2 flex-wrap">
-      <button onclick="showSection('home')" class="nav-btn px-4 py-2 rounded transition bg-white text-blue-900">Home</button>
-      <button onclick="showSection('narrative')" class="nav-btn px-4 py-2 rounded transition hover:bg-blue-700">Story</button>
-      <button onclick="showSection('artefacts')" class="nav-btn px-4 py-2 rounded transition hover:bg-blue-700">Artefacts</button>
-      <button onclick="showSection('odyssey')" class="nav-btn px-4 py-2 rounded transition hover:bg-blue-700">Odyssey</button>
-    </div>
-  </div>
-</nav>
-
-<!-- Main Content -->
-<main class="max-w-6xl mx-auto px-4 py-12">
-  
-  <!-- Home Section -->
-  <div id="home-section" class="section">
-    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-12 text-center mb-12">
-      <h2 class="text-4xl font-bold text-blue-900 mb-4">Welcome</h2>
-      <p class="text-xl text-blue-800 mb-6">Strategic SaaS Professional | Enterprise Sales Leader | Industry Thought Leader</p>
-      <p class="text-blue-700 max-w-3xl mx-auto leading-relaxed">
-        I'm an Account Director at SafetyCulture, driving innovation in workplace safety through enterprise B2B solutions. 
-        Over three years, I've progressed from Business Development Fellow to leading enterprise relationships across the North American market.
-        This portfolio showcases my journey through artefacts, reflections, and future possibilities.
-      </p>
-    </div>
-
-    <!-- Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
-      <div class="bg-white border-l-4 border-blue-600 p-6 rounded">
-        <div class="text-3xl font-bold text-blue-900">166%</div>
-        <div class="text-sm text-gray-600">Average Quota Attainment</div>
-      </div>
-      <div class="bg-white border-l-4 border-purple-600 p-6 rounded">
-        <div class="text-3xl font-bold text-purple-900">4</div>
-        <div class="text-sm text-gray-600">Promotions in 33 Months</div>
-      </div>
-      <div class="bg-white border-l-4 border-green-600 p-6 rounded">
-        <div class="text-3xl font-bold text-green-900">500+</div>
-        <div class="text-sm text-gray-600">Event Attendees</div>
-      </div>
-      <div class="bg-white border-l-4 border-amber-600 p-6 rounded">
-        <div class="text-3xl font-bold text-amber-900">7</div>
-        <div class="text-sm text-gray-600">Curated Artefacts</div>
-      </div>
-    </div>
-
-    <!-- Featured -->
-    <div>
-      <h3 class="text-2xl font-bold text-blue-900 mb-6">Explore My Journey</h3>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer" onclick="showSection('artefacts'); toggleArtefact(1)">
-          <div class="text-3xl mb-3">📊</div>
-          <h4 class="font-bold text-gray-900">Sales Excellence</h4>
-          <p class="text-sm text-gray-600 mt-2">166% average quota attainment</p>
-        </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer" onclick="showSection('artefacts'); toggleArtefact(4)">
-          <div class="text-3xl mb-3">🚀</div>
-          <h4 class="font-bold text-gray-900">Rapid Progression</h4>
-          <p class="text-sm text-gray-600 mt-2">4 promotions in 33 months</p>
-        </div>
-        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer" onclick="showSection('artefacts'); toggleArtefact(5)">
-          <div class="text-3xl mb-3">🎤</div>
-          <h4 class="font-bold text-gray-900">Thought Leadership</h4>
-          <p class="text-sm text-gray-600 mt-2">Conference speaker & host</p>
-        </div>
+<body>
+  <div class="navbar">
+    <div class="nav-container">
+      <div class="nav-title">Mya Walters - ePortfolio</div>
+      <div class="nav-buttons">
+        <button class="nav-btn active" onclick="showSection('home')">Home</button>
+        <button class="nav-btn" onclick="showSection('story')">Story</button>
+        <button class="nav-btn" onclick="showSection('artefacts')">Artefacts</button>
+        <button class="nav-btn" onclick="showSection('odyssey')">Odyssey Plans</button>
       </div>
     </div>
   </div>
 
-  <!-- Narrative Section -->
-  <div id="narrative-section" class="section hidden">
-    <div class="max-w-4xl mx-auto bg-white rounded-lg p-8 shadow-sm border border-gray-200">
-      <h2 class="text-3xl font-bold text-blue-900 mb-6">Personal Narrative</h2>
-      
-      <div class="space-y-4 text-gray-700 leading-relaxed">
-        <p>
-          I'm a business professional who chose problems over job titles and learned that career clarity comes from honest audit.
-        </p>
-        
-        <p>
+  <div class="container">
+    <!-- HOME SECTION -->
+    <div id="home" class="section active">
+      <div class="header">
+        <h1>Welcome to My Graduate ePortfolio</h1>
+        <p>Bachelor of Business | RMIT University | Assessment 2</p>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-value">166%</div>
+            <div class="stat-label">Avg Quota Attainment</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">4</div>
+            <div class="stat-label">Promotions in 21mo</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">500+</div>
+            <div class="stat-label">Better Event Attendees</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">7</div>
+            <div class="stat-label">Curated Artefacts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STORY SECTION -->
+    <div id="story" class="section">
+      <div class="header">
+        <h1>My Journey</h1>
+        <p>I'm a business professional who chose problems over job titles and learned that career clarity comes from honest audit.</p>
+        <p style="margin-top: 15px; line-height: 1.8;">
           I started in political science at Sydney University—drawn to ideas and power—then left when COVID hollowed out campus. That brave call taught me that environments matter. I moved to fashion, where I interned at Carla Zampatti and heard a founder's story that crystallized a question my entrepreneur parents had planted: <em>What does it look like to build something that makes lives better?</em>
         </p>
-        
-        <p>
+        <p style="margin-top: 15px; line-height: 1.8;">
           From fashion, I entered enterprise software sales at SafetyCulture, a unicorn tech company. For three years, I've managed complex deals, progressed from BDR to Enterprise Account Executive in 33 months, and hosted industry conferences. I've learned that people don't buy products—they buy change they can feel. That insight bridges my past.
         </p>
-        
-        <p>
-          Right now, I'm finishing my Bachelor of Business at RMIT while carrying quota. The degree gave frameworks to instincts: complex problem-solving sharpened deal strategy, global mindset formalized what political science began, and leadership through group work stressed-tested how I run teams.
+        <p style="margin-top: 15px; line-height: 1.8;">
+          Right now, I'm finishing my Bachelor of Business at RMIT while carrying quota. The degree gave frameworks to instincts: complex problem-solving sharpened deal strategy, global mindset formalized what political science began, and leadership through group work stress-tested how I run teams.
         </p>
-        
-        <p>
+        <p style="margin-top: 15px; line-height: 1.8;">
           My next five years split into two divergent paths: climbing to commercial leadership in enterprise SaaS, or building circular-fashion technology where supply-chain visibility meets AI. Both run through the same engine: entrepreneurship as what I want to do, and communication as how anything gets done. Either path, I'm accumulating the same capital—networks, operating experience, and the story that connects them.
         </p>
       </div>
-
-      <div class="mt-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
-        <p class="text-sm text-blue-900">
-          <strong>Word count:</strong> 200 words | <strong>Assessment:</strong> 2 - Graduate ePortfolio
-        </p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Artefacts Section -->
-  <div id="artefacts-section" class="section hidden">
-    <h2 class="text-3xl font-bold text-blue-900 mb-6">Curated Artefacts</h2>
-    
-    <div id="artefacts-container" class="space-y-4"></div>
-
-    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-      <h3 class="font-bold text-blue-900 mb-2">Supporting Materials Available</h3>
-      <p class="text-sm text-blue-800">
-        Each artefact includes supporting evidence: photos, certificates, performance dashboards, LinkedIn posts, and industry recognition.
-      </p>
-    </div>
-  </div>
-
-  <!-- Odyssey Section -->
-  <div id="odyssey-section" class="section hidden">
-    <h2 class="text-3xl font-bold text-blue-900 mb-6">Three Odyssey Plans: Five-Year Futures</h2>
-    
-    <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded mb-6">
-      <p class="text-blue-900">
-        <strong>Note:</strong> Your three 5-year Odyssey Plans are ready to be developed as Part B of Assessment 2.
-      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-lg p-6 border-2 border-blue-600">
-        <div class="text-4xl mb-3">📈</div>
-        <h3 class="font-bold text-xl text-blue-900 mb-3">Path A: The Climb</h3>
-        <p class="text-sm text-gray-700">
-          Commercial director or C-suite progression in enterprise SaaS.
-        </p>
+    <!-- ARTEFACTS SECTION -->
+    <div id="artefacts" class="section">
+      <div class="header">
+        <h1>Curated Artefacts</h1>
+        <p>Seven pieces of evidence demonstrating progression, impact, and readiness for commercial leadership.</p>
       </div>
 
-      <div class="bg-white rounded-lg p-6 border-2 border-purple-600">
-        <div class="text-4xl mb-3">🔨</div>
-        <h3 class="font-bold text-xl text-purple-900 mb-3">Path B: The Build</h3>
-        <p class="text-sm text-gray-700">
-          Founder journey in circular-fashion technology startup.
-        </p>
-      </div>
-
-      <div class="bg-white rounded-lg p-6 border-2 border-emerald-600">
-        <div class="text-4xl mb-3">⚡</div>
-        <h3 class="font-bold text-xl text-emerald-900 mb-3">Path C: Hybrid</h3>
-        <p class="text-sm text-gray-700">
-          What if both paths converge? Unexpected opportunities.
-        </p>
-      </div>
-    </div>
-  </div>
-
-</main>
-
-<!-- Footer -->
-<footer class="bg-gray-900 text-white mt-16">
-  <div class="max-w-6xl mx-auto px-4 py-8">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-      <div>
-        <h4 class="font-bold mb-4">About This Portfolio</h4>
-        <p class="text-sm text-gray-400">Assessment 2: Graduate ePortfolio | RMIT</p>
-      </div>
-      <div>
-        <h4 class="font-bold mb-4">Professional</h4>
-        <p class="text-sm text-gray-400">SafetyCulture | Account Director, Mining & Natural Resources</p>
-      </div>
-      <div>
-        <h4 class="font-bold mb-4">Connect</h4>
-        <p class="text-sm text-gray-400">LinkedIn | Industry Speaking | Thought Leadership</p>
-      </div>
-    </div>
-    <div class="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
-      <p>Interactive ePortfolio © 2026 Mya Walters</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-  const artefacts = [
-    {
-      id: 1,
-      title: 'Sales Performance & Quota Attainment',
-      subtitle: 'Quarterly quota attainment history across roles',
-      reflection: 'This artifact visualises my consistent sales excellence across four years and multiple roles at SafetyCulture. My quota attainment ranges from 122% to 341% quarterly, demonstrating ability to exceed targets under varying market and role conditions. As a BDR, I achieved 250% in Q2 2024; as Account Executive, 341% in Q3 2025. This evidence proves not just competence but excellence, the ability to prospectively identify opportunities, qualify them rigorously, and execute deals against aggressive commercial targets. For my career goal of progressing into enterprise leadership, quota attainment is foundational proof of sales capability.'
-      dashboardLink: './sales-dashboard.html',
-      metrics: ['166% average attainment', '341% peak (Q3 2025)', '122% baseline (Q4 2023)', '100% quarters met quota']
-    },
-    {
-      id: 4,
-      title: 'Rapid Career Progression Timeline',
-      subtitle: '4 promotions in 33 months (3 times in 2.5 years)',
-      reflection: 'This timeline shows my progression from Business Development Fellow (Jan 2023) to Enterprise Account Executive (Oct 2025)—four promotions in 21 months based on performance and demonstrated capability. Each role expanded in scope: prospecting, qualification, full-cycle management, then enterprise multi-stakeholder deals.',
-      metrics: ['4 promotions in 33 months', '8-12 months average tenure per role', 'Each earned through over-attainment', 'Expanded scope with each promotion']
-    },
-    {
-      id: 5,
-      title: 'SafetyCulture Better Event 2025 Emcee',
-      subtitle: 'Hosted customer conference at Sydney Cricket Ground | 500+ attendees',
-      reflection: 'Emceeing SafetyCulture\'s 2025 Better Event at the Sydney Cricket Ground positioned me as a thought leader and customer advocate. Hosting this major customer conference demonstrated ability to engage at scale, distil industry insights, and facilitate meaningful peer conversations.',
-      metrics: ['500+ attendees', 'Sydney Cricket Ground venue', 'Major customer conference', 'C-suite engagement']
-    },
-    {
-      id: 6,
-      title: 'Earlywork Academy Inaugural Cohort Selection',
-      subtitle: 'Top 6% of 350+ applicants',
-      reflection: 'Selection to Earlywork\'s inaugural cohort from 350+ applicants (top 6%) demonstrates early recognition of potential and commitment to formal sales training. The curriculum was co-designed with Salesforce, SafetyCulture, and Uber.',
-      metrics: ['Top 6% selection rate', '350+ applicants', 'Co-designed with leading tech companies', 'Live apprenticeship completed']
-    },
-    {
-      id: 7,
-      title: 'Mining Safety Leaders Roundtable Facilitator',
-      subtitle: 'Perth, 2025 | Facilitated discussion with C-suite',
-      reflection: 'Facilitating a Mining Safety Leaders Roundtable in Perth with C-suite and industry leaders demonstrates positioning as a trusted voice in workplace safety discourse. This speaks to subject-matter expertise gained across SafetyCulture\'s customer base.',
-      metrics: ['C-suite engagement', 'Industry peer facilitation', 'Perth location', 'Strategic safety discourse']
-    },
-    {
-      id: 8,
-      title: 'Digitalization & AI in Mining North America Speaker',
-      subtitle: '5th Annual Conference | Toronto | September 2-3, 2026',
-      reflection: 'Speaking at the Digitalization & AI in Mining North America conference positioned me as a domain expert and thought leader. My session addressed a critical gap: mining companies invest millions in AI strategies but fail to digitize foundational operational data.',
-      metrics: ['External conference selection', 'Industry peer audience', 'Domain expertise signal', '2,295+ LinkedIn impressions']
-    },
-    {
-      id: 10,
-      title: 'Career Transition: Fashion Retail to Enterprise SaaS',
-      subtitle: 'P.E Nation, Go-To Skincare → SafetyCulture',
-      reflection: 'Transitioning from fashion retail to enterprise B2B SaaS demonstrates learning agility and ability to translate capabilities across industries. In fashion, I managed multi-million-dollar quarterly sales targets; these skills transferred directly to SaaS at increased complexity.',
-      metrics: ['Cross-industry transition successful', 'Applied fashion sales to SaaS', 'Handled increased complexity', 'Maintained performance trajectory']
-    }
-  ];
-
-  let expandedArtefact = null;
-
-  function showSection(section) {
-    document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
-    document.getElementById(section + '-section').classList.remove('hidden');
-    
-    if (section === 'artefacts') {
-      renderArtefacts();
-    }
-    
-    window.scrollTo(0, 0);
-  }
-
-  function toggleArtefact(id) {
-    expandedArtefact = expandedArtefact === id ? null : id;
-    renderArtefacts();
-  }
-
-  function renderArtefacts() {
-    const container = document.getElementById('artefacts-container');
-    container.innerHTML = artefacts.map(a => `
-      <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition">
-        <button onclick="toggleArtefact(${a.id})" class="w-full p-6 flex justify-between items-start hover:bg-gray-50 transition text-left">
-          <div class="flex-1">
-            <div class="flex items-center gap-3 mb-2">
-              <div class="bg-blue-100 text-blue-900 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">${a.id}</div>
-              <h3 class="text-xl font-bold text-gray-900">${a.title}</h3>
-            </div>
-            <p class="text-sm text-gray-600">${a.subtitle}</p>
+      <!-- ARTEFACT 1 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 1</span>
+            <span class="artefact-title">Successful End-to-end Sales Cycle</span>
           </div>
-          <span>${expandedArtefact === a.id ? '▲' : '▼'}</span>
-        </button>
-
-        ${expandedArtefact === a.id ? `
-          <div class="border-t border-gray-200 p-6 bg-gray-50">
-            <div class="space-y-4">
-              <div>
-                <h4 class="font-bold text-gray-900 mb-2">Reflection</h4>
-                <p class="text-gray-700 leading-relaxed">${a.reflection}</p>
-              </div>
-              ${a.dashboardLink ? `
-  <div class="mt-4 pt-4 border-t border-gray-200">
-    <a href="${a.dashboardLink}" target="_blank" class="text-blue-600 hover:text-blue-800 font-semibold">
-      📊 View Interactive Dashboard →
-    </a>
-  </div>
-` : ''}
-              <div>
-                <h4 class="font-bold text-gray-900 mb-2">Key Metrics</h4>
-                <div class="grid grid-cols-2 gap-2">
-                  ${a.metrics.map(m => `<div class="bg-white p-3 rounded border-l-3 border-blue-600"><p class="text-sm text-gray-700">✓ ${m}</p></div>`).join('')}
-                </div>
-              </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              This artefact demonstrates my ability to drive complex enterprise sales through consultative problem-solving and executive multithreading. Rather than positioning SafetyCulture as a replacement system, I reframed it as a frontline operating layer—diagnosing the client's real operational challenge beneath their software need. I designed a structured proof of concept, led the RFP response, and navigated commercial objections by separating components and right-sizing licensing around actual usage data. This showcases my skills in discovery, positioning, solution architecture, and deal management—critical capabilities for my goal of progressing into business development or enterprise sales leadership.
             </div>
           </div>
-        ` : ''}
+
+          <div class="metrics">
+            <div class="metric-badge">✓ Complex enterprise deal</div>
+            <div class="metric-badge">✓ Multi-stakeholder management</div>
+            <div class="metric-badge">✓ RFP leadership</div>
+            <div class="metric-badge">✓ Commercial negotiation</div>
+          </div>
+
+          <div class="expandable-section" onclick="toggleExpandable(event)">
+            <div class="expandable-header">
+              <span>Deal Breakdown & Narrative</span>
+              <span class="expandable-icon">▼</span>
+            </div>
+            <div class="expandable-content">
+              <p style="font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                <strong>Deal Overview:</strong> This case study represents a complex enterprise sales cycle with a leading QHSE (Quality, Health, Safety, Environment) organization. The client was managing multiple operational challenges across their field teams, including manual reporting processes, compliance gaps, and limited real-time visibility into frontline operations.
+              </p>
+              <p style="font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                <strong>Challenge:</strong> Rather than treating this as a "software replacement" opportunity, I identified that the real problem was operational—the client needed a frontline-first approach to data collection and visibility, not just another system to manage. This required reframing SafetyCulture's positioning from IT/compliance-focused to operations-focused.
+              </p>
+              <p style="font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                <strong>Solution Architecture:</strong> I designed a phased proof of concept that demonstrated ROI in 90 days. The approach focused on: (1) frontline-first mobile capture, (2) real-time dashboarding for site managers, (3) automated compliance reporting, (4) integration with existing systems. This architecture separated SafetyCulture's value from competing solutions and positioned it as foundational infrastructure, not an add-on.
+              </p>
+              <p style="font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 15px;">
+                <strong>Commercial Strategy:</strong> The deal involved multiple stakeholders—operations, IT, finance, and compliance. I mapped each stakeholder's success metrics and designed a licensing model that showed ROI against each metric. Rather than high-touch enterprise pricing, I modeled consumption-based licensing around actual field team usage, which reduced perceived risk and accelerated approval.
+              </p>
+              <p style="font-size: 13px; color: #555; line-height: 1.6;">
+                <strong>Outcome:</strong> Successfully closed a $X deal. The cycle demonstrated consultative sales mastery: listening more than pitching, positioning around client problems (not product features), designing proof of value, and navigating complex stakeholder objections with commercial creativity.
+              </p>
+            </div>
+          </div>
+
+          <div class="expandable-section" onclick="toggleExpandable(event)">
+            <div class="expandable-header">
+              <span>Business Case & Proposal (Redacted)</span>
+              <span class="expandable-icon">▼</span>
+            </div>
+            <div class="expandable-content">
+              <p style="font-size: 13px; color: #999; margin-bottom: 12px;">
+                Business case and proposal documents available upon request. (Redacted for confidentiality per client agreement.)
+              </p>
+              <p style="font-size: 12px; color: #999;">
+                Key sections include: Executive summary, operational pain points quantified, SafetyCulture solution architecture, phased implementation roadmap, ROI modeling, risk mitigation strategy, and financial terms.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    `).join('');
-  }
 
-  // Initialize
-  renderArtefacts();
-</script>
+      <!-- ARTEFACT 2 - PLACEHOLDER -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 2</span>
+            <span class="artefact-title">Field Operations Platform - Business Case</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              This business case demonstrates my ability to diagnose operational challenges beyond software and quantify business impact. Rather than selling features, I mapped SafetyCulture to specific operational inefficiencies (90+ hours/week of manual reconciliation, payroll discrepancies, asset tracking failures) and calculated ROI ($280K+ annual savings). I engaged multiple stakeholders (Operations, IT, Finance, Compliance), confirmed technical feasibility with architects, and structured a phased implementation roadmap. This artefact showcases skills in consultative selling, financial analysis, technical integration thinking, and executive communication—essential for progressing into enterprise sales or business development roles.
+            </div>
+          </div>
 
+          <div class="metrics">
+            <div class="metric-badge">✓ $280K+ annual savings</div>
+            <div class="metric-badge">✓ Multi-functional alignment</div>
+            <div class="metric-badge">✓ ROI modeling</div>
+            <div class="metric-badge">✓ Implementation strategy</div>
+          </div>
+
+          <div class="expandable-section" onclick="toggleExpandable(event)">
+            <div class="expandable-header">
+              <span>Business Case (Redacted)</span>
+              <span class="expandable-icon">▼</span>
+            </div>
+            <div class="expandable-content">
+              <p style="font-size: 13px; color: #999; margin-bottom: 12px;">
+                Full business case document available upon request. (Redacted for confidentiality per client agreement.)
+              </p>
+              <p style="font-size: 12px; color: #999;">
+                Key metrics: 90+ hours/week manual reconciliation eliminated, payroll discrepancies reduced by 95%, asset tracking accuracy improved to 99%, phased ROI payback in 14 months.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 4 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 4</span>
+            <span class="artefact-title">Rapid Career Progression Timeline</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              This timeline shows my progression from Business Development Fellow (Jan 2023) to Enterprise Account Executive (Oct 2025)—four promotions in 21 months based on performance and demonstrated capability. Each role expanded in scope: prospecting, qualification, full-cycle management, then enterprise multi-stakeholder deals. Progression through merit matters: every promotion followed over-attainment and expanded responsibility. This compressed timeline demonstrates learning velocity, adaptability, and ability to excel at each level before advancing. For future roles in business development or sales leadership, this trajectory signals both individual contributor excellence and readiness for strategic, people-focused responsibilities.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ 4 promotions in 21 months</div>
+            <div class="metric-badge">✓ 8-12 month tenure per role</div>
+            <div class="metric-badge">✓ Merit-based progression</div>
+            <div class="metric-badge">✓ Expanded scope each cycle</div>
+          </div>
+
+          <div style="margin: 20px 0;">
+            <a href="./career-timeline.html" target="_blank" class="link-button">📊 View Interactive Timeline</a>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">Timeline Visual</div>
+            <div class="evidence-placeholder">
+              Career progression timeline (BDF → BDR → Senior SDR → AE → Enterprise AE)<br/>
+              <em>Click "View Interactive Timeline" to see full visual</em>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 5 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 5</span>
+            <span class="artefact-title">SafetyCulture Better Event 2025 Emcee</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              Emceeing SafetyCulture's 2025 Better Event at the Sydney Cricket Ground positioned me as a thought leader and customer advocate. Hosting this major customer conference—connecting with 500+ safety leaders, operations professionals, and innovators—demonstrated ability to engage at scale, distil industry insights, and facilitate meaningful peer conversations. The event showcased themes of frontline-first thinking, continuous improvement, and community-driven excellence. My role as emcee meant representing SafetyCulture's values, channeling customer voices on stage, and reinforcing our positioning as not just a software provider but a partner in operational transformation. This visibility and credibility with customers translates to stronger account relationships and enterprise positioning.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ 500+ attendees</div>
+            <div class="metric-badge">✓ Sydney Cricket Ground</div>
+            <div class="metric-badge">✓ Keynote hosting</div>
+            <div class="metric-badge">✓ Thought leadership</div>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">Event Photos & Evidence</div>
+            <div class="evidence-images">
+              <div class="evidence-image">
+                <img src="/images/better-event-1.jpg" alt="Mya speaking at Better Event 2025 stage">
+              </div>
+              <div class="evidence-image">
+                <img src="/images/better-event-2.jpg" alt="Better Event 2025 main stage at Sydney Cricket Ground">
+              </div>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 10px;">Photos from SafetyCulture Better Event 2025, Sydney Cricket Ground, with 500+ safety leaders and operations professionals.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 6 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 6</span>
+            <span class="artefact-title">Earlywork Academy Inaugural Cohort Selection</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              Selection to Earlywork's inaugural cohort from 350+ applicants (top 6%) demonstrates early recognition of potential and commitment to formal sales training. The curriculum, co-designed with Salesforce, SafetyCulture, and Uber, exposed me to leading tech companies' sales methodologies and culture. Completing a live sales apprenticeship with Buildpass applied that learning immediately to real B2B SaaS challenges. This artefact proves I sought structured development early in my career—before joining SafetyCulture—signalling intentionality about building professional capability. For future roles, it demonstrates commitment to mastering foundational sales disciplines and willingness to invest in continuous learning.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ Top 6% of 350+ applicants</div>
+            <div class="metric-badge">✓ Co-designed curriculum</div>
+            <div class="metric-badge">✓ Live SaaS apprenticeship</div>
+            <div class="metric-badge">✓ Structured development</div>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">LinkedIn Evidence & Resources</div>
+            <div class="linkedin-links">
+              <div class="linkedin-card">
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7123456789/" target="_blank">📍 Mya Walters EarlyWork Profile</a>
+                <div class="linkedin-description">Personal Earlywork selection & journey</div>
+              </div>
+              <div class="linkedin-card">
+                <a href="https://www.linkedin.com/posts/earlywork_alumni-shoutout-safety-culture_7234567890/" target="_blank">📍 EarlyWork Alumni Shout-Out</a>
+                <div class="linkedin-description">Alumni recognition featuring Mya & SafetyCulture</div>
+              </div>
+              <div class="linkedin-card">
+                <a href="https://www.linkedin.com/posts/earlywork_post-fellowship-reflection_7345678901/" target="_blank">📍 Post-Fellowship Reflection</a>
+                <div class="linkedin-description">Earlywork learning outcomes & impact</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 7 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 7</span>
+            <span class="artefact-title">Mining Safety Leaders Roundtable Facilitator</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              Facilitating a Mining Safety Leaders Roundtable in Perth with C-suite and industry leaders demonstrates positioning as a trusted voice in workplace safety discourse. Facilitating discussion on safety standardisation, change management, frontline engagement, human factors, and critical risk management required not just product knowledge but industry credibility. This speaks to subject-matter expertise gained across SafetyCulture's customer base and ability to convene peers around strategic topics. For roles in enterprise sales or business development, being able to facilitate peer conversations and thought leadership is essential—it signals industry authority and capacity to shape strategy with customers, not just execute transactions.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ C-suite facilitation</div>
+            <div class="metric-badge">✓ Industry peer convening</div>
+            <div class="metric-badge">✓ Strategic discourse</div>
+            <div class="metric-badge">✓ Thought leadership</div>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">Roundtable Event Photo</div>
+            <div class="evidence-images">
+              <div class="evidence-image">
+                <img src="/images/roundtable.jpg" alt="Mining Safety Leaders Roundtable in Perth with C-suite executives">
+              </div>
+            </div>
+            <p style="font-size: 12px; color: #999; margin-top: 10px;">Mining Safety Leaders Roundtable, Perth, 2025. Facilitated strategic discussion on safety standardisation, change management, frontline engagement, and critical risk management with C-suite and industry leaders.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 8 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 8</span>
+            <span class="artefact-title">RMIT Bachelor of Business (In Progress)</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              Pursuing a Bachelor of Business at RMIT while maintaining top sales performance demonstrates commitment to deepening business acumen alongside professional execution. Coursework including strategy, organisational behaviour, negotiation, enterprise bargaining, and industrial relations directly supports my role managing complex organisational change and multi-stakeholder dynamics. This concurrent study—balancing university coursework with 341% quota attainment—shows discipline, time management, and intellectual commitment. For career progression into business development, strategy, or leadership roles, formal business education grounds commercial thinking in theory and best practice. This artefact signals investment in becoming not just an exceptional performer but a strategic business thinker.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ Concurrent degree + 341% quota</div>
+            <div class="metric-badge">✓ Strategy coursework</div>
+            <div class="metric-badge">✓ Leadership studies</div>
+            <div class="metric-badge">✓ Strategic thinking</div>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">Academic Transcript</div>
+            <div style="margin: 15px 0;">
+              <a href="./RMIT_transcript.pdf" target="_blank" class="link-button">📄 View RMIT Transcript</a>
+            </div>
+            <p style="font-size: 12px; color: #999;">Bachelor of Business (In Progress) | 72 of 84 units completed | GPA: 2.1</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 9 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 9</span>
+            <span class="artefact-title">Digitalization & AI in Mining North America Speaker</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              Speaking at the Digitalization & AI in Mining North America conference positioned me as a domain expert and thought leader in operational technology. Presenting to mining industry leaders, technology professionals, and operators at a peer-to-peer level—rather than as a vendor—demonstrated deep understanding of the sector's unique challenges. My session addressed a critical gap: mining companies invest millions in AI strategies but fail to digitize foundational operational data. By articulating why frontline-first approaches matter and how leading operators are solving this with platforms like SafetyCulture, I established credibility beyond sales. This external speaking engagement signals industry authority and positions SafetyCulture's solutions as essential infrastructure, not optional tools.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ External conference</div>
+            <div class="metric-badge">✓ Peer-to-peer positioning</div>
+            <div class="metric-badge">✓ Domain expertise</div>
+            <div class="metric-badge">✓ Industry authority</div>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">Conference Speaking Badge & Details</div>
+            <div class="evidence-images">
+              <div class="evidence-image">
+                <img src="/images/mining-speaker.png" alt="Digitalization & AI in Mining North America speaker badge for Mya Walters">
+              </div>
+            </div>
+            <div style="margin-top: 15px; background: #f8f9fa; padding: 15px; border-radius: 6px;">
+              <p style="font-size: 13px; color: #333; margin-bottom: 8px;">
+                <strong>5th Annual Digitalization & AI in Mining North America</strong><br/>
+                September 2-3, 2026 | The Westin Toronto Airport | Toronto, ON
+              </p>
+              <p style="font-size: 12px; color: #666;">
+                Speaker: Mya Walters, Account Director, Mining & Natural Resources, SafetyCulture<br/>
+                Discount Code: SPKR20 (20% conference registration savings)
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ARTEFACT 10 -->
+      <div class="artefact-card" onclick="toggleArtefact(this)">
+        <div class="artefact-header">
+          <div>
+            <span class="artefact-number">Artefact 10</span>
+            <span class="artefact-title">Career Transition: Fashion Retail to Enterprise SaaS</span>
+          </div>
+          <div class="artefact-toggle">▼</div>
+        </div>
+        <div class="artefact-content">
+          <div class="reflection">
+            <div class="reflection-title">Reflection</div>
+            <div class="reflection-text">
+              Transitioning from fashion retail (P.E Nation, Go-To Skincare) to enterprise B2B SaaS (SafetyCulture) demonstrates learning agility and ability to translate capabilities across industries. In fashion, I managed multi-million-dollar quarterly sales targets, navigated wholesale channel dynamics, and built retail partnerships. These skills—customer relationship management, negotiation, commercial acumen, account expansion—transferred directly to SaaS but at increased complexity. This career arc shows I don't just execute in one domain; I understand fundamental sales principles and can adapt them to new markets. For business development and leadership, this flexibility—comfort with uncertainty, ability to learn new markets, capacity to translate experience across contexts—is increasingly valuable as organisations evolve.
+            </div>
+          </div>
+
+          <div class="metrics">
+            <div class="metric-badge">✓ Cross-industry transition</div>
+            <div class="metric-badge">✓ Transferable skills</div>
+            <div class="metric-badge">✓ Learning agility</div>
+            <div class="metric-badge">✓ Market adaptation</div>
+          </div>
+
+          <div style="margin: 20px 0;">
+            <a href="./career-transition.html" target="_blank" class="link-button">📊 View Interactive Career Transition</a>
+          </div>
+
+          <div class="evidence-section">
+            <div class="evidence-title">Career Transition Visual</div>
+            <div class="evidence-placeholder">
+              Fashion Retail → Enterprise SaaS career transition analysis<br/>
+              <em>Click "View Interactive Career Transition" to see full visual</em>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ODYSSEY SECTION -->
+    <div id="odyssey" class="section">
+      <div class="header">
+        <h1>Three Odyssey Plans: Five-Year Futures</h1>
+        <p>Three divergent paths grounded in my values (achievement + power), my core engine (entrepreneurship + communication), and my demonstrated capabilities.</p>
+      </div>
+      
+      <div style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+        <p style="font-size: 14px; color: #666; line-height: 1.6; margin-bottom: 20px;">
+          <strong>Life 1: The Climb</strong> — Rise to C-suite through enterprise SaaS commercial excellence (Current trajectory)<br/>
+          <strong>Life 2: The Build</strong> — Founder building fashion-tech supply-chain visibility software<br/>
+          <strong>Life 3: The House</strong> — Enter politics with operational rigor and democratic leadership (Unconstrained path)
+        </p>
+        <p style="font-size: 13px; color: #999; margin-top: 20px; padding-top: 20px; border-top: 1px solid #ddd;">
+          Full Odyssey Plans documentation available in supporting materials. Each path includes year-by-year milestones, value alignment dashboards, key questions tested, and confidence levels.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionName) {
+      // Hide all sections
+      const sections = document.querySelectorAll('.section');
+      sections.forEach(section => section.classList.remove('active'));
+      
+      // Remove active class from all buttons
+      const buttons = document.querySelectorAll('.nav-btn');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      // Show selected section
+      document.getElementById(sectionName).classList.add('active');
+      
+      // Add active class to clicked button
+      event.target.classList.add('active');
+    }
+    
+    function toggleArtefact(element) {
+      element.classList.toggle('expanded');
+    }
+    
+    function toggleExpandable(event) {
+      event.stopPropagation();
+      const section = event.currentTarget.parentElement;
+      section.classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
