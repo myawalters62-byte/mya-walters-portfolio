@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Transition: Fashion to SaaS - Mya Walters</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+    }
+    
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 50px 40px;
+      text-align: center;
+    }
+    
+    .header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+    
+    .header p {
+      font-size: 16px;
+      opacity: 0.95;
+    }
+    
+    .download-btn {
+      background: white;
+      color: #667eea;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .content {
+      padding: 60px 40px;
+    }
+    
+    .transition-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+    
+    .domain {
+      position: relative;
+    }
+    
+    .domain-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    
+    .domain-icon {
+      font-size: 40px;
+      margin-right: 15px;
+    }
+    
+    .domain-info h2 {
+      font-size: 24px;
+      color: #1e3c72;
+      margin-bottom: 5px;
+    }
+    
+    .domain-info p {
+      font-size: 14px;
+      color: #666;
+    }
+    
+    .fashion {
+      background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+      border-radius: 12px;
+      padding: 30px;
+      border: 2px solid #f39c12;
+    }
+    
+    .saas {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      border-radius: 12px;
+      padding: 30px;
+      border: 2px solid #00b894;
+    }
+    
+    .section-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-top: 20px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid rgba(30, 60, 114, 0.2);
+    }
+    
+    .list-item {
+      font-size: 13px;
+      color: #333;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .list-item:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #f39c12;
+      font-weight: bold;
+    }
+    
+    .saas .list-item:before {
+      color: #00b894;
+    }
+    
+    .domain-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .metric-card {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      text-align: center;
+      border-left: 3px solid #f39c12;
+    }
+    
+    .saas .metric-card {
+      border-left-color: #00b894;
+    }
+    
+    .metric-card strong {
+      color: #1e3c72;
+      display: block;
+      font-size: 14px;
+      margin-bottom: 3px;
+    }
+    
+    /* Arrow/Bridge Section */
+    .transition-center {
+      grid-column: 1 / -1;
+      position: relative;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .transition-arrow {
+      position: relative;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .arrow-line {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      right: 10%;
+      height: 3px;
+      background: linear-gradient(90deg, #f39c12 0%, #667eea 50%, #00b894 100%);
+      transform: translateY(-50%);
+    }
+    
+    .arrow-head {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-left: 20px solid #00b894;
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+    }
+    
+    .transition-label {
+      position: relative;
+      z-index: 10;
+      background: white;
+      padding: 0 20px;
+      color: #667eea;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    /* Transferable Skills Section */
+    .skills-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 100%);
+      border: 2px solid #0369a1;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .skills-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 30px;
+    }
+    
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    
+    .skill-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+    }
+    
+    .skill-icon {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .skill-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 6px;
+    }
+    
+    .skill-description {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.4;
+    }
+    
+    /* Learning Curve Section */
+    .learning-curve {
+      background: #f8f9fa;
+      border: 2px solid #667eea;
+      border-radius: 12px;
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+    
+    .learning-title {
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 30px;
+    }
+    
+    .curve-item {
+      background: white;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #667eea;
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+    
+    .curve-label {
+      font-weight: bold;
+      color: #1e3c72;
+      font-size: 14px;
+    }
+    
+    .curve-description {
+      font-size: 13px;
+      color: #666;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      background: #e0e0e0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+      width: 100%;
+      border-radius: 4px;
+    }
+    
+    /* Value Proposition */
+    .value-prop {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .value-prop h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .value-prop p {
+      font-size: 14px;
+      line-height: 1.6;
+      opacity: 0.95;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 12px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .download-btn {
+        display: none;
+      }
+      
+      .container {
+        box-shadow: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .transition-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      
+      .header h1 {
+        font-size: 24px;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+      
+      .domain-metrics {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Career Transition: Fashion to Enterprise SaaS</h1>
+      <p>Translating Core Sales Capabilities Across Industries</p>
+      <button class="download-btn" onclick="downloadAsImage()">📥 Download as PNG</button>
+    </div>
+    
+    <div class="content" id="contentToCapture">
+      <!-- Domain Comparison -->
+      <div class="transition-wrapper">
+        <!-- Fashion Retail -->
+        <div class="domain fashion">
+          <div class="domain-header">
+            <div class="domain-icon">👗</div>
+            <div class="domain-info">
+              <h2>Fashion Retail</h2>
+              <p>P.E Nation, Go-To Skincare</p>
+            </div>
+          </div>
+          
+          <div class="section-title">Revenue & Scale</div>
+          <div class="list-item">Multi-million-dollar quarterly sales targets</div>
+          <div class="list-item">Wholesale channel management</div>
+          <div class="list-item">Retail partnership development</div>
+          <div class="list-item">Inventory & margin optimization</div>
+          
+          <div class="domain-metrics">
+            <div class="metric-card">
+              <strong>Multi-Million</strong>
+              Quarterly Revenue
+            </div>
+            <div class="metric-card">
+              <strong>Wholesale</strong>
+              Channel Expertise
+            </div>
+            <div class="metric-card">
+              <strong>Retail</strong>
+              Partnership Builder
+            </div>
+            <div class="metric-card">
+              <strong>Brand</strong>
+              Advocate
+            </div>
+          </div>
+        </div>
+        
+        <!-- Arrow/Bridge -->
+        <div class="transition-center">
+          <div class="transition-arrow">
+            <div class="arrow-line"></div>
+            <div class="arrow-head"></div>
+            <div class="transition-label">TRANSITION</div>
+          </div>
+        </div>
+        
+        <!-- Enterprise SaaS -->
+        <div class="domain saas">
+          <div class="domain-header">
+            <div class="domain-icon">💼</div>
+            <div class="domain-info">
+              <h2>Enterprise SaaS</h2>
+              <p>SafetyCulture</p>
+            </div>
+          </div>
+          
+          <div class="section-title">Complexity & Scale</div>
+          <div class="list-item">Enterprise deal management ($500K-$5M+)</div>
+          <div class="list-item">Multi-stakeholder negotiation</div>
+          <div class="list-item">RFP response & procurement processes</div>
+          <div class="list-item">Complex solution architecture</div>
+          
+          <div class="domain-metrics">
+            <div class="metric-card">
+              <strong>341%</strong>
+              Peak Quota Attainment
+            </div>
+            <div class="metric-card">
+              <strong>Enterprise</strong>
+              Deal Specialist
+            </div>
+            <div class="metric-card">
+              <strong>4 Promotions</strong>
+              in 21 Months
+            </div>
+            <div class="metric-card">
+              <strong>Global</strong>
+              #1 BDR
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Transferable Skills -->
+      <div class="skills-section">
+        <div class="skills-title">🎯 Core Transferable Skills</div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-icon">🤝</div>
+            <div class="skill-name">Customer Relationship Management</div>
+            <div class="skill-description">Built deep relationships with retail partners → Managing complex enterprise relationships</div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">💬</div>
+            <div class="skill-name">Negotiation</div>
+            <div class="skill-description">Negotiated wholesale terms & margins → Threading multi-stakeholder procurement processes</div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">💰</div>
+            <div class="skill-name">Commercial Acumen</div>
+            <div class="skill-description">Managed P&L in retail → Modeling ROI and financial impact in enterprise deals</div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">📈</div>
+            <div class="skill-name">Account Expansion</div>
+            <div class="skill-description">Growing existing retail accounts → Expanding customer value and upselling</div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">🎓</div>
+            <div class="skill-name">Rapid Learning</div>
+            <div class="skill-description">Mastered fashion market dynamics → Quickly learned enterprise sales methodology</div>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-icon">🌍</div>
+            <div class="skill-name">Market Adaptation</div>
+            <div class="skill-description">Understood retail market nuances → Translated capabilities to tech/SaaS</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Learning Curve -->
+      <div class="learning-curve">
+        <div class="learning-title">📊 Complexity Evolution & Performance</div>
+        
+        <div class="curve-item">
+          <div class="curve-label">Fashion Sales</div>
+          <div>
+            <div class="curve-description">Managed relationships, negotiated deals, executed at scale</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 60%;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="curve-item">
+          <div class="curve-label">BDR (SafetyCulture)</div>
+          <div>
+            <div class="curve-description">Applied foundational skills to prospecting & qualification (250% quota)</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="curve-item">
+          <div class="curve-label">Senior SDR</div>
+          <div>
+            <div class="curve-description">Full-cycle management & stakeholder complexity (135-141% quota)</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="curve-item">
+          <div class="curve-label">Account Executive</div>
+          <div>
+            <div class="curve-description">Enterprise deals, multi-stakeholder negotiation (144-341% quota)</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="curve-item">
+          <div class="curve-label">Enterprise AE</div>
+          <div>
+            <div class="curve-description">Leading largest-scale enterprise relationships & strategic accounts</div>
+            <div class="progress-bar">
+              <div class="progress-fill" style="width: 100%;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Value Proposition -->
+      <div class="value-prop">
+        <h3>🚀 Why This Matters for Leadership</h3>
+        <p>
+          This career transition proves I'm not locked into one domain. I understand fundamental sales principles—discovery, value communication, negotiation, relationship building—and can adapt them to new markets. As organizations evolve and markets shift, this flexibility is increasingly valuable. I'm comfortable with uncertainty, eager to learn new markets, and capable of translating experience across contexts. For business development and commercial leadership roles, this agility is a competitive advantage.
+        </p>
+      </div>
+    </div>
+    
+    <div class="footer">
+      <p>Career Transition Analysis | SafetyCulture | RMIT Assessment 2 | Mya Walters</p>
+    </div>
+  </div>
+
+  <script>
+    function downloadAsImage() {
+      const element = document.getElementById('contentToCapture');
+      const opt = {
+        margin: 10,
+        filename: 'career-transition.png',
+        image: { type: 'png', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+      };
+      
+      html2canvas(element, { scale: 2, backgroundColor: '#ffffff' }).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'career-transition.png';
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>

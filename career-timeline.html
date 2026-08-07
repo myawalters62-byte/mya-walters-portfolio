@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Career Progression Timeline - Mya Walters</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f8f9fa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .timeline-content {
+      padding: 60px 40px;
+      background: white;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #1e3c72;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      text-align: center;
+      font-size: 16px;
+      color: #666;
+      margin-bottom: 50px;
+      font-weight: 500;
+    }
+    
+    .timeline {
+      position: relative;
+      padding: 20px 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: #ddd;
+    }
+    
+    .timeline-item {
+      margin-bottom: 50px;
+      position: relative;
+    }
+    
+    .timeline-item:nth-child(odd) .content {
+      margin-left: 0;
+      margin-right: 52%;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) .content {
+      margin-left: 52%;
+      margin-right: 0;
+      text-align: left;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 30px;
+      transform: translateX(-50%);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: white;
+      border: 3px solid #667eea;
+      z-index: 10;
+    }
+    
+    .timeline-item:nth-child(1)::before {
+      border-color: #667eea;
+      background: #667eea;
+    }
+    
+    .timeline-item:nth-child(2)::before {
+      border-color: #764ba2;
+      background: #764ba2;
+    }
+    
+    .timeline-item:nth-child(3)::before {
+      border-color: #2196f3;
+      background: #2196f3;
+    }
+    
+    .timeline-item:nth-child(4)::before {
+      border-color: #10b981;
+      background: #10b981;
+    }
+    
+    .timeline-item:nth-child(5)::before {
+      border-color: #f59e0b;
+      background: #f59e0b;
+      width: 28px;
+      height: 28px;
+      top: 25px;
+    }
+    
+    .content {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 3px solid #667eea;
+    }
+    
+    .timeline-item:nth-child(1) .content {
+      border-left-color: #667eea;
+      background: #dbeafe;
+      border-left-color: #1e40af;
+    }
+    
+    .timeline-item:nth-child(2) .content {
+      border-left-color: #764ba2;
+      background: #f3e5f5;
+      border-left-color: #7c3aed;
+    }
+    
+    .timeline-item:nth-child(3) .content {
+      border-left-color: #2196f3;
+      background: #e3f2fd;
+      border-left-color: #1976d2;
+    }
+    
+    .timeline-item:nth-child(4) .content {
+      border-left-color: #10b981;
+      background: #d1fae5;
+      border-left-color: #059669;
+    }
+    
+    .timeline-item:nth-child(5) .content {
+      border-left-color: #f59e0b;
+      background: #fef3c7;
+      border-left-color: #f59e0b;
+      border-width: 3px;
+    }
+    
+    .role-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 8px;
+    }
+    
+    .company {
+      font-size: 14px;
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    
+    .dates {
+      font-size: 13px;
+      color: #475569;
+      margin-bottom: 10px;
+    }
+    
+    .achievement {
+      font-size: 12px;
+      color: #475569;
+      margin: 5px 0;
+      line-height: 1.4;
+    }
+    
+    .achievement strong {
+      color: #1e3c72;
+    }
+    
+    .metrics-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 100%);
+      border: 2px solid #0369a1;
+      border-radius: 8px;
+      padding: 30px;
+      margin-top: 50px;
+      text-align: center;
+    }
+    
+    .metrics-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #0369a1;
+      margin-bottom: 20px;
+    }
+    
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    
+    .metric {
+      background: white;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #1e3c72;
+      font-weight: 600;
+      border-left: 3px solid #0369a1;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 12px;
+      color: #999;
+      padding-top: 20px;
+      border-top: 1px solid #e0e0e0;
+    }
+    
+    .download-button {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: transform 0.2s;
+    }
+    
+    button:hover {
+      transform: translateY(-2px);
+    }
+    
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      
+      .download-button {
+        display: none;
+      }
+      
+      .container {
+        box-shadow: none;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-item::before {
+        left: 30px;
+      }
+      
+      .timeline-item:nth-child(odd) .content,
+      .timeline-item:nth-child(even) .content {
+        margin-left: 80px;
+        margin-right: 0;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="download-button">
+      <button onclick="downloadAsImage()">📥 Download as PNG</button>
+    </div>
+    
+    <div class="timeline-content" id="timelineContent">
+      <h1>Career Progression Timeline</h1>
+      <p class="subtitle">4 Promotions in 21 Months | Jan 2023 – Oct 2025</p>
+      
+      <div class="timeline">
+        <!-- Stage 1 -->
+        <div class="timeline-item">
+          <div class="content">
+            <div class="role-title">Business Development Fellow</div>
+            <div class="company">Earlywork Academy</div>
+            <div class="dates">Jan – Mar 2023</div>
+            <div class="achievement">✓ Selected from 350+ applicants (top 6%)</div>
+            <div class="achievement">✓ Curriculum co-designed with Salesforce, SafetyCulture, Uber</div>
+            <div class="achievement">✓ Completed live SaaS apprenticeship with Buildpass</div>
+          </div>
+        </div>
+        
+        <!-- Stage 2 -->
+        <div class="timeline-item">
+          <div class="content">
+            <div class="role-title">Business Development Representative</div>
+            <div class="company">SafetyCulture</div>
+            <div class="dates">Mar 2023 – Jun 2024 (16 months)</div>
+            <div class="achievement"><strong>✓ 250% Quota in Q2 2024</strong></div>
+            <div class="achievement"><strong>★ Global #1 BDR for 3 Consecutive Quarters</strong></div>
+            <div class="achievement">✓ Quota range: 122%-250%</div>
+            <div class="achievement">✓ Demonstrated prospecting and qualification mastery</div>
+          </div>
+        </div>
+        
+        <!-- Stage 3 -->
+        <div class="timeline-item">
+          <div class="content">
+            <div class="role-title">Senior Strategic Development Representative</div>
+            <div class="company">SafetyCulture</div>
+            <div class="dates">Jun 2024 – Oct 2024 (4 months)</div>
+            <div class="achievement">✓ Promoted after 5 months of over-attainment</div>
+            <div class="achievement">✓ Quota attainment: 135-141%</div>
+            <div class="achievement">✓ Transitioned to full-cycle deal management</div>
+            <div class="achievement">✓ Expanded scope to strategic accounts</div>
+          </div>
+        </div>
+        
+        <!-- Stage 4 -->
+        <div class="timeline-item">
+          <div class="content">
+            <div class="role-title">Account Executive</div>
+            <div class="company">SafetyCulture</div>
+            <div class="dates">Oct 2024 – Oct 2025 (12 months)</div>
+            <div class="achievement"><strong>✓ Peak Performance: 341% Quota in Q3 2025</strong></div>
+            <div class="achievement">✓ Quota range: 144%-341%</div>
+            <div class="achievement">✓ Managed mid-market and enterprise deals</div>
+            <div class="achievement">✓ Multi-stakeholder negotiation expertise</div>
+          </div>
+        </div>
+        
+        <!-- Stage 5 -->
+        <div class="timeline-item">
+          <div class="content">
+            <div class="role-title">Enterprise Account Executive</div>
+            <div class="company">SafetyCulture (Current)</div>
+            <div class="dates">Oct 2025 – Present</div>
+            <div class="achievement"><strong>✓ Leading enterprise relationships</strong></div>
+            <div class="achievement">✓ Across North American market</div>
+            <div class="achievement">★ Ready for commercial leadership roles</div>
+            <div class="achievement">✓ Demonstrates executive-track capability</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="metrics-section">
+        <div class="metrics-title">Key Progression Metrics</div>
+        <div class="metrics-grid">
+          <div class="metric">✓ 4 Promotions in 21 Months</div>
+          <div class="metric">✓ Average Tenure: 8-12 Months per Role</div>
+          <div class="metric">✓ Quota Attainment: 122%-341%</div>
+          <div class="metric">✓ Each Promotion Earned Through Performance</div>
+          <div class="metric">✓ Rapid Learning Velocity</div>
+          <div class="metric">✓ Ready for Sales Leadership Roles</div>
+        </div>
+      </div>
+      
+      <div class="footer">
+        <p>SafetyCulture | RMIT Assessment 2 | Mya Walters</p>
+        <p>Career Progression Timeline | Jan 2023 – Oct 2025</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function downloadAsImage() {
+      const element = document.getElementById('timelineContent');
+      const opt = {
+        margin: 10,
+        filename: 'career-timeline.pdf',
+        image: { type: 'png', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { orientation: 'portrait', unit: 'mm', format: 'a4' }
+      };
+      
+      // Alternative: Use html2canvas for PNG only
+      html2canvas(element, { scale: 2, backgroundColor: '#ffffff' }).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'career-timeline.png';
+        link.click();
+      });
+    }
+  </script>
+</body>
+</html>
