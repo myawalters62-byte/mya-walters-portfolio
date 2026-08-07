@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mya Walters | ePortfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    .transition-all { transition: all 0.3s ease; }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+<!-- Navigation -->
+<nav class="bg-gradient-to-r from-blue-900 to-blue-800 text-white sticky top-0 z-50 shadow-lg">
+  <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center flex-wrap gap-4">
+    <div class="flex items-center gap-2">
+      <div class="w-10 h-10 bg-white text-blue-900 rounded-full flex items-center justify-center font-bold text-sm">MW</div>
+      <div>
+        <h1 class="text-xl font-bold">Mya Walters</h1>
+        <p class="text-blue-100 text-sm">Account Director, Mining & Natural Resources</p>
+      </div>
+    </div>
+    <div class="flex gap-2 flex-wrap">
+      <button onclick="showSection('home')" class="nav-btn px-4 py-2 rounded transition bg-white text-blue-900">Home</button>
+      <button onclick="showSection('narrative')" class="nav-btn px-4 py-2 rounded transition hover:bg-blue-700">Story</button>
+      <button onclick="showSection('artefacts')" class="nav-btn px-4 py-2 rounded transition hover:bg-blue-700">Artefacts</button>
+      <button onclick="showSection('odyssey')" class="nav-btn px-4 py-2 rounded transition hover:bg-blue-700">Odyssey</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="max-w-6xl mx-auto px-4 py-12">
+  
+  <!-- Home Section -->
+  <div id="home-section" class="section">
+    <div class="bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg p-12 text-center mb-12">
+      <h2 class="text-4xl font-bold text-blue-900 mb-4">Welcome</h2>
+      <p class="text-xl text-blue-800 mb-6">Strategic SaaS Professional | Enterprise Sales Leader | Industry Thought Leader</p>
+      <p class="text-blue-700 max-w-3xl mx-auto leading-relaxed">
+        I'm an Account Director at SafetyCulture, driving innovation in workplace safety through enterprise B2B solutions. 
+        Over three years, I've progressed from Business Development Fellow to leading enterprise relationships across the North American market.
+        This portfolio showcases my journey through artefacts, reflections, and future possibilities.
+      </p>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-white border-l-4 border-blue-600 p-6 rounded">
+        <div class="text-3xl font-bold text-blue-900">166%</div>
+        <div class="text-sm text-gray-600">Average Quota Attainment</div>
+      </div>
+      <div class="bg-white border-l-4 border-purple-600 p-6 rounded">
+        <div class="text-3xl font-bold text-purple-900">4</div>
+        <div class="text-sm text-gray-600">Promotions in 33 Months</div>
+      </div>
+      <div class="bg-white border-l-4 border-green-600 p-6 rounded">
+        <div class="text-3xl font-bold text-green-900">500+</div>
+        <div class="text-sm text-gray-600">Event Attendees</div>
+      </div>
+      <div class="bg-white border-l-4 border-amber-600 p-6 rounded">
+        <div class="text-3xl font-bold text-amber-900">7</div>
+        <div class="text-sm text-gray-600">Curated Artefacts</div>
+      </div>
+    </div>
+
+    <!-- Featured -->
+    <div>
+      <h3 class="text-2xl font-bold text-blue-900 mb-6">Explore My Journey</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer" onclick="showSection('artefacts'); toggleArtefact(1)">
+          <div class="text-3xl mb-3">📊</div>
+          <h4 class="font-bold text-gray-900">Sales Excellence</h4>
+          <p class="text-sm text-gray-600 mt-2">166% average quota attainment</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer" onclick="showSection('artefacts'); toggleArtefact(4)">
+          <div class="text-3xl mb-3">🚀</div>
+          <h4 class="font-bold text-gray-900">Rapid Progression</h4>
+          <p class="text-sm text-gray-600 mt-2">4 promotions in 33 months</p>
+        </div>
+        <div class="bg-white border border-gray-200 rounded-lg p-6 hover:shadow-lg transition cursor-pointer" onclick="showSection('artefacts'); toggleArtefact(5)">
+          <div class="text-3xl mb-3">🎤</div>
+          <h4 class="font-bold text-gray-900">Thought Leadership</h4>
+          <p class="text-sm text-gray-600 mt-2">Conference speaker & host</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Narrative Section -->
+  <div id="narrative-section" class="section hidden">
+    <div class="max-w-4xl mx-auto bg-white rounded-lg p-8 shadow-sm border border-gray-200">
+      <h2 class="text-3xl font-bold text-blue-900 mb-6">Personal Narrative</h2>
+      
+      <div class="space-y-4 text-gray-700 leading-relaxed">
+        <p>
+          I'm a business professional who chose problems over job titles and learned that career clarity comes from honest audit.
+        </p>
+        
+        <p>
+          I started in political science at Sydney University—drawn to ideas and power—then left when COVID hollowed out campus. That brave call taught me that environments matter. I moved to fashion, where I interned at Carla Zampatti and heard a founder's story that crystallized a question my entrepreneur parents had planted: <em>What does it look like to build something that makes lives better?</em>
+        </p>
+        
+        <p>
+          From fashion, I entered enterprise software sales at SafetyCulture, a unicorn tech company. For three years, I've managed complex deals, progressed from BDR to Enterprise Account Executive in 33 months, and hosted industry conferences. I've learned that people don't buy products—they buy change they can feel. That insight bridges my past.
+        </p>
+        
+        <p>
+          Right now, I'm finishing my Bachelor of Business at RMIT while carrying quota. The degree gave frameworks to instincts: complex problem-solving sharpened deal strategy, global mindset formalized what political science began, and leadership through group work stressed-tested how I run teams.
+        </p>
+        
+        <p>
+          My next five years split into two divergent paths: climbing to commercial leadership in enterprise SaaS, or building circular-fashion technology where supply-chain visibility meets AI. Both run through the same engine: entrepreneurship as what I want to do, and communication as how anything gets done. Either path, I'm accumulating the same capital—networks, operating experience, and the story that connects them.
+        </p>
+      </div>
+
+      <div class="mt-8 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
+        <p class="text-sm text-blue-900">
+          <strong>Word count:</strong> 200 words | <strong>Assessment:</strong> 2 - Graduate ePortfolio
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Artefacts Section -->
+  <div id="artefacts-section" class="section hidden">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">Curated Artefacts</h2>
+    
+    <div id="artefacts-container" class="space-y-4"></div>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
+      <h3 class="font-bold text-blue-900 mb-2">Supporting Materials Available</h3>
+      <p class="text-sm text-blue-800">
+        Each artefact includes supporting evidence: photos, certificates, performance dashboards, LinkedIn posts, and industry recognition.
+      </p>
+    </div>
+  </div>
+
+  <!-- Odyssey Section -->
+  <div id="odyssey-section" class="section hidden">
+    <h2 class="text-3xl font-bold text-blue-900 mb-6">Three Odyssey Plans: Five-Year Futures</h2>
+    
+    <div class="bg-blue-50 border-l-4 border-blue-600 p-6 rounded mb-6">
+      <p class="text-blue-900">
+        <strong>Note:</strong> Your three 5-year Odyssey Plans are ready to be developed as Part B of Assessment 2.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg p-6 border-2 border-blue-600">
+        <div class="text-4xl mb-3">📈</div>
+        <h3 class="font-bold text-xl text-blue-900 mb-3">Path A: The Climb</h3>
+        <p class="text-sm text-gray-700">
+          Commercial director or C-suite progression in enterprise SaaS.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 border-2 border-purple-600">
+        <div class="text-4xl mb-3">🔨</div>
+        <h3 class="font-bold text-xl text-purple-900 mb-3">Path B: The Build</h3>
+        <p class="text-sm text-gray-700">
+          Founder journey in circular-fashion technology startup.
+        </p>
+      </div>
+
+      <div class="bg-white rounded-lg p-6 border-2 border-emerald-600">
+        <div class="text-4xl mb-3">⚡</div>
+        <h3 class="font-bold text-xl text-emerald-900 mb-3">Path C: Hybrid</h3>
+        <p class="text-sm text-gray-700">
+          What if both paths converge? Unexpected opportunities.
+        </p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white mt-16">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <h4 class="font-bold mb-4">About This Portfolio</h4>
+        <p class="text-sm text-gray-400">Assessment 2: Graduate ePortfolio | RMIT</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Professional</h4>
+        <p class="text-sm text-gray-400">SafetyCulture | Account Director, Mining & Natural Resources</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Connect</h4>
+        <p class="text-sm text-gray-400">LinkedIn | Industry Speaking | Thought Leadership</p>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+      <p>Interactive ePortfolio © 2026 Mya Walters</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const artefacts = [
+    {
+      id: 1,
+      title: 'Sales Performance & Quota Attainment',
+      subtitle: 'Quarterly quota attainment history across roles',
+      reflection: 'This artefact visualises my consistent sales excellence across four years and multiple roles at SafetyCulture. My quota attainment ranges from 122% to 341% quarterly, demonstrating ability to exceed targets under varying market and role conditions. As a BDR, I achieved 250% in Q2 2024; as Account Executive, 341% in Q3 2025.',
+      metrics: ['166% average attainment', '341% peak (Q3 2025)', '122% baseline (Q4 2023)', '100% quarters met quota']
+    },
+    {
+      id: 4,
+      title: 'Rapid Career Progression Timeline',
+      subtitle: '4 promotions in 33 months (3 times in 2.5 years)',
+      reflection: 'This timeline shows my progression from Business Development Fellow (Jan 2023) to Enterprise Account Executive (Oct 2025)—four promotions in 21 months based on performance and demonstrated capability. Each role expanded in scope: prospecting, qualification, full-cycle management, then enterprise multi-stakeholder deals.',
+      metrics: ['4 promotions in 33 months', '8-12 months average tenure per role', 'Each earned through over-attainment', 'Expanded scope with each promotion']
+    },
+    {
+      id: 5,
+      title: 'SafetyCulture Better Event 2025 Emcee',
+      subtitle: 'Hosted customer conference at Sydney Cricket Ground | 500+ attendees',
+      reflection: 'Emceeing SafetyCulture\'s 2025 Better Event at the Sydney Cricket Ground positioned me as a thought leader and customer advocate. Hosting this major customer conference demonstrated ability to engage at scale, distil industry insights, and facilitate meaningful peer conversations.',
+      metrics: ['500+ attendees', 'Sydney Cricket Ground venue', 'Major customer conference', 'C-suite engagement']
+    },
+    {
+      id: 6,
+      title: 'Earlywork Academy Inaugural Cohort Selection',
+      subtitle: 'Top 6% of 350+ applicants',
+      reflection: 'Selection to Earlywork\'s inaugural cohort from 350+ applicants (top 6%) demonstrates early recognition of potential and commitment to formal sales training. The curriculum was co-designed with Salesforce, SafetyCulture, and Uber.',
+      metrics: ['Top 6% selection rate', '350+ applicants', 'Co-designed with leading tech companies', 'Live apprenticeship completed']
+    },
+    {
+      id: 7,
+      title: 'Mining Safety Leaders Roundtable Facilitator',
+      subtitle: 'Perth, 2025 | Facilitated discussion with C-suite',
+      reflection: 'Facilitating a Mining Safety Leaders Roundtable in Perth with C-suite and industry leaders demonstrates positioning as a trusted voice in workplace safety discourse. This speaks to subject-matter expertise gained across SafetyCulture\'s customer base.',
+      metrics: ['C-suite engagement', 'Industry peer facilitation', 'Perth location', 'Strategic safety discourse']
+    },
+    {
+      id: 8,
+      title: 'Digitalization & AI in Mining North America Speaker',
+      subtitle: '5th Annual Conference | Toronto | September 2-3, 2026',
+      reflection: 'Speaking at the Digitalization & AI in Mining North America conference positioned me as a domain expert and thought leader. My session addressed a critical gap: mining companies invest millions in AI strategies but fail to digitize foundational operational data.',
+      metrics: ['External conference selection', 'Industry peer audience', 'Domain expertise signal', '2,295+ LinkedIn impressions']
+    },
+    {
+      id: 10,
+      title: 'Career Transition: Fashion Retail to Enterprise SaaS',
+      subtitle: 'P.E Nation, Go-To Skincare → SafetyCulture',
+      reflection: 'Transitioning from fashion retail to enterprise B2B SaaS demonstrates learning agility and ability to translate capabilities across industries. In fashion, I managed multi-million-dollar quarterly sales targets; these skills transferred directly to SaaS at increased complexity.',
+      metrics: ['Cross-industry transition successful', 'Applied fashion sales to SaaS', 'Handled increased complexity', 'Maintained performance trajectory']
+    }
+  ];
+
+  let expandedArtefact = null;
+
+  function showSection(section) {
+    document.querySelectorAll('.section').forEach(el => el.classList.add('hidden'));
+    document.getElementById(section + '-section').classList.remove('hidden');
+    
+    if (section === 'artefacts') {
+      renderArtefacts();
+    }
+    
+    window.scrollTo(0, 0);
+  }
+
+  function toggleArtefact(id) {
+    expandedArtefact = expandedArtefact === id ? null : id;
+    renderArtefacts();
+  }
+
+  function renderArtefacts() {
+    const container = document.getElementById('artefacts-container');
+    container.innerHTML = artefacts.map(a => `
+      <div class="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-md transition">
+        <button onclick="toggleArtefact(${a.id})" class="w-full p-6 flex justify-between items-start hover:bg-gray-50 transition text-left">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-2">
+              <div class="bg-blue-100 text-blue-900 rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm">${a.id}</div>
+              <h3 class="text-xl font-bold text-gray-900">${a.title}</h3>
+            </div>
+            <p class="text-sm text-gray-600">${a.subtitle}</p>
+          </div>
+          <span>${expandedArtefact === a.id ? '▲' : '▼'}</span>
+        </button>
+
+        ${expandedArtefact === a.id ? `
+          <div class="border-t border-gray-200 p-6 bg-gray-50">
+            <div class="space-y-4">
+              <div>
+                <h4 class="font-bold text-gray-900 mb-2">Reflection</h4>
+                <p class="text-gray-700 leading-relaxed">${a.reflection}</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-gray-900 mb-2">Key Metrics</h4>
+                <div class="grid grid-cols-2 gap-2">
+                  ${a.metrics.map(m => `<div class="bg-white p-3 rounded border-l-3 border-blue-600"><p class="text-sm text-gray-700">✓ ${m}</p></div>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        ` : ''}
+      </div>
+    `).join('');
+  }
+
+  // Initialize
+  renderArtefacts();
+</script>
+
+</body>
+</html>
